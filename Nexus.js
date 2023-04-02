@@ -80,19 +80,11 @@ bot.on('message', async (message) =>{
         }
         
         // this is the denied and accept msgs
-        
-    }
-    log(message)
-})
 
-function info(msg) {
-    log('['.green + 'INFO'.green + '] '.green + msg)
-}
-
-function say(msg) {
-    info("saying: " + msg)
-    bot.chat(msg)
-}
+bot.on('kicked', (reason) => {
+    console.error(reason)
+    hook.send("bot got kicked reason: " + reason)
+    process.exit()
 
 // hot function makes repl not look shit when typing use this instead of console.log
 const log
